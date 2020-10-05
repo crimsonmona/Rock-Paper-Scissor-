@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock Paper Scissor Console Style</title>
+</head>
+<body>
+  <script>
+
+    let myArray = ['rock', 'scissors', 'paper'];
+    let winArray = [
+      ['rock', 'scissors'],
+      ['paper', 'rock'],
+      ['scissors', 'paper']
+    ];
+    let playerScore = 0
+    let computerScore = 0
+
+    //Player's choise 
+    function playerPlay() {
+      return prompt('Pick: Rock Paper Scissors');
+    }
+
+    //Computer choice 
+    function computerPlay() {
+      return myArray[Math.floor(Math.random() * myArray.length)];
+    }
+
+
+    function playRound() {
+
+      var roundOver = false;
+
+      while (!roundOver) {
+
+          let playerSelection = playerPlay() //player selected
+          let computerSelection = computerPlay() //Computer selected 
+          
+          let response = ''
+          playerSelection = playerSelection.toLowerCase();
+
+          console.log(playerSelection)
+          console.log(computerSelection)
+
+          winArray.forEach((e) => {
+            var winningMove = e[0];
+            var losingMove = e[1];
+
+            if (playerSelection == computerSelection) {
+              response = "es a draw folks!"
+            } else if (playerSelection == winningMove && computerSelection == losingMove) {
+              playerScore++
+              response = "Player Wins!";
+            } else if (computerSelection == winningMove && playerSelection == losingMove) {
+              computerScore++
+              response = "Computer Wins =(";
+            }
+
+          })
+
+          console.log(playerScore, computerScore)
+
+          if (playerScore === 5 || computerScore === 5) {
+            break;
+          }
+        }
+
+      }
+      
+
+
+    playRound();
+
+
+</script>
+</body>
+</html>
